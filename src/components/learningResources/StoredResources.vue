@@ -1,7 +1,7 @@
 <template>
   <ul>
     <resource-item
-      v-for="resource in resources"
+      v-for="resource in injResources"
       :key="resource.id"
       :title="resource.title"
       :description="resource.description"
@@ -14,7 +14,12 @@
 import ResourceItem from './ResourceItem.vue';
 
 export default {
-  props: ['resources'],
+  inject: ['resources'],
+  data() {
+    return {
+      injResources: this.resources,
+    };
+  },
   components: {
     ResourceItem,
   },
