@@ -44,6 +44,7 @@ export default {
     return {
       resources: this.storedResources,
       addResource: this.addResource,
+      deleteResource: this.deleteResource,
     };
   },
   methods: {
@@ -58,6 +59,12 @@ export default {
         link: link,
       });
       this.selectedTab = 'stored-resources';
+    },
+    deleteResource(id) {
+      this.storedResources.splice(
+        this.storedResources.findIndex((res) => res.id === id),
+        1
+      );
     },
   },
   props: ['resources'],
